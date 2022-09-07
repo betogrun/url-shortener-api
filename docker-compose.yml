@@ -1,0 +1,34 @@
+services:
+
+  db:
+    image: postgres:14
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgres/data
+
+  web:
+    build: .
+    entrypoint: ./entrypoint.sh
+    command: bash -c "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    tty: true
+    volumes:
+      - .:/usr/src/url-shortener-api
+      - bundle:/usr/local/bundle
+    ports:
+      - 3000:3000
+    environment:
+      - RAILS_MAX_THREADS=5
+      - RAILS_ENV=development
+      - RACK_ENV=development
+      - DATABASE_HOST=db
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  bundle:
