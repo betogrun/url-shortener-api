@@ -1,0 +1,30 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/url_entries":
+    post:
+      summary: Creates a shortned url
+      tags:
+      - url entry
+      parameters: []
+      responses:
+        '201':
+          description: url entry created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+              required:
+              - url
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000/

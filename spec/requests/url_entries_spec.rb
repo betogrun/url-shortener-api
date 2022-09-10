@@ -3,7 +3,7 @@ require 'swagger_helper'
 RSpec.describe 'api/v1/url_entries', type: :request do
   path '/api/v1/url_entries' do
     post 'Creates a shortned url' do
-      tags 'shortned_url'
+      tags 'url entry'
       consumes 'application/json'
       parameter name: :params, in: :body, schema: {
         type: :object,
