@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  post '/api/v1/url_entries', to: 'api/v1/url_entries#create'
 end
