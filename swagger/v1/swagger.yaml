@@ -6,7 +6,7 @@ info:
 paths:
   "/api/v1/url_entries":
     post:
-      summary: Creates a shortned url
+      summary: Creates an URL entry with the shortened and the original URL
       tags:
       - url entry
       parameters: []
