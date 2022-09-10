@@ -13,6 +13,8 @@ paths:
       responses:
         '201':
           description: url entry created
+        '422':
+          description: url is invalid
       requestBody:
         content:
           application/json:

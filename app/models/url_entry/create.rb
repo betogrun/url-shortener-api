@@ -13,6 +13,8 @@ class UrlEntry
       url_entry = repository.create(key: key, shortened_url: "#{domain_name}/#{key.value}", url: url)
 
       Success(result: { url_entry: url_entry })
+    rescue Timeout::Error
+      Failure(:timeout_error, result: { error: 'key generation timeout' })
     end
   end
 end

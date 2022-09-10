@@ -7,6 +7,10 @@ module API
         ::UrlEntry::Create
           .call(url: permitted_params[:url], domain_name: permitted_params[:domain_name])
           .on_success { |result| render_json(result[:url_entry], status: :created) }
+          .on_failure(:invalid_url) { |result| render_error(result[:error], status: :unprocessable_entity) }
+          .on_failure(:timeout_error) { |result| render_error(result[:error], status: :unprocessable_entity) }
+      rescue ActionController::ParameterMissing => exception
+        render_error(exception.message, status: :bad_request)
       end
 
       private
@@ -23,6 +27,10 @@ module API
 
       def render_json(data, status:)
         render(json: data.as_json, status: status)
+      end
+
+      def render_error(message, status:)
+        render(json: { error: message }, status: status)
       end
     end
   end

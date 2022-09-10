@@ -21,7 +21,20 @@ RSpec.describe 'api/v1/url_entries', type: :request do
         it 'creates an url entry' do
           result = JSON.parse(response.body, symbolize_names: true)
 
+          expect(result[:id]).not_to be_nil
+          expect(result[:key]).to match(/[:alnum:]/)
+          expect(result[:shortened_url]).to match(URI::DEFAULT_PARSER.make_regexp)
           expect(result[:url]).to eq('https://www.google.com')
+        end
+      end
+
+      response 422, 'url is invalid' do
+        let(:params) { { url: 'www.nope' } }
+
+        it 'returns the invalid url error message' do
+          result = JSON.parse(response.body, symbolize_names: true)
+
+          expect(result[:error]).to eq('invalid url')
         end
       end
     end
