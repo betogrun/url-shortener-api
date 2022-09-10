@@ -97,6 +97,7 @@ GEM
     json (2.6.2)
     json-schema (2.8.1)
       addressable (>= 2.4)
+    kind (5.10.0)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -221,6 +222,11 @@ GEM
     timeout (0.3.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    u-attributes (2.8.0)
+      kind (>= 4.0, < 6.0)
+    u-case (4.5.1)
+      kind (>= 5.6, < 6.0)
+      u-attributes (>= 2.7, < 3.0)
     unicode-display_width (2.2.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -243,6 +249,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.15, >= 2.15.2)
   shoulda-matchers (~> 5.1)
   tzinfo-data
+  u-case (~> 4.5.1)
 
 RUBY VERSION
    ruby 3.1.2p20
