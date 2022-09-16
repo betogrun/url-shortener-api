@@ -8,6 +8,10 @@ class ShortenedUrl
       @value = value || "#{SecureRandom.alphanumeric(6)}#{rand(1..9)}"
     end
 
+    def self.to_proc
+      ->(value) { new(value) }
+    end
+
     def valid?
       /[[:alnum:]]/.match?(value) && value.size == 7
     end

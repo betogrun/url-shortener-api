@@ -28,5 +28,13 @@ class ShortenedUrl
     rescue Timeout::Error
       nil
     end
+
+    def find_shortened_url(key:)
+      Record
+        .where(key: key.value)
+        .select(:id, :key, :compact_url, :effective_url)
+        .take
+        &.then(&BuildShortenedUrl)
+    end
   end
 end
