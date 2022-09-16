@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class UrlEntry
-  class Url
+class ShortenedUrl
+  class EffectiveUrl
     attr_reader :value
 
     def initialize(value)

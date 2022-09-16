@@ -4,22 +4,21 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/url_entries":
+  "/api/v1/shortened_urls":
     post:
-      summary: Creates an URL entry with the shortened and the original URL
+      summary: Creates the shortened URL
       tags:
-      - url entry
+      - shortened url
       parameters: []
       responses:
         '201':
-          description: url entry created
+          description: shortened url created
         '422':
           description: url is invalid
       requestBody:
         content:
           application/json:
             schema:
-              type: object
               properties:
                 url:
                   type: string

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  key = Faker::Alphanumeric.alphanumeric(number: 10)
+  key = Faker::Alphanumeric.alphanumeric(number: 7)
 
-  factory :url_entry, class: '::UrlEntry::Record' do
+  factory :shortened_url, class: '::ShortenedUrl::Record' do
     key { key }
-    shortened_url { Faker::Internet.url(path: "/#{key}") }
-    url { Faker::Internet.url }
+    compact_url { Faker::Internet.url(path: "/#{key}") }
+    effective_url { Faker::Internet.url }
   end
 end
